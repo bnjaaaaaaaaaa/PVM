@@ -1,20 +1,36 @@
 {
   "name": "PMV Conservación Marina",
-  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.codespaces.yml"],
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "docker-compose.codespaces.yml"
+  ],
   "service": "web",
-  "runServices": ["db", "web"],
+  "runServices": [
+    "db",
+    "web",
+    "adminer"
+  ],
   "workspaceFolder": "/workspace",
   "shutdownAction": "stopCompose",
-  "forwardPorts": [8501],
+  "forwardPorts": [
+    8501,
+    8080
+  ],
   "portsAttributes": {
     "8501": {
       "label": "PMV (Streamlit)",
       "onAutoForward": "openBrowser"
+    },
+    "8080": {
+      "label": "Adminer (SQL web)",
+      "onAutoForward": "notify"
     }
   },
   "customizations": {
     "vscode": {
-      "extensions": ["ms-python.python"]
+      "extensions": [
+        "ms-python.python"
+      ]
     }
   }
 }

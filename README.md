@@ -49,6 +49,12 @@ docker compose up --build -d
 
 ## Probar las vistas y procedimientos
 
+### Desde el navegador (Adminer)
+
+Abre el puerto **8080** (en Codespaces: pestaña **Ports**) e ingresa con: Sistema **MySQL**, Servidor **db**, Usuario **root**, Contraseña **root**, Base de datos **conservacion_marina_db**. Luego entra a **Comando SQL** y ejecuta las consultas.
+
+### Desde la terminal
+
 Con los contenedores levantados:
 
 ```bash
