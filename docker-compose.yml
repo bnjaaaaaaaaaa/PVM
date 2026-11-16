@@ -1,0 +1,37 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_conservacion
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: conservacion_marina_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./script_integral_final.sql:/docker-entrypoint-initdb.d/01_script_integral_final.sql
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+  web:
+    build: .
+    container_name: streamlit_conservacion
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: conservacion_marina_db
+      DB_USER: root
+      DB_PASS: root
+    ports:
+      - "8501:8501"
+
+volumes:
+  mysql_data:
