@@ -12,10 +12,12 @@ services:
       - ./script_integral_final.sql:/docker-entrypoint-initdb.d/01_script_integral_final.sql
       - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      # La base está lista cuando ya se creó el último procedimiento del script
+      test: ["CMD-SHELL", "mysql -h 127.0.0.1 -uroot -proot -N -e \"SELECT COUNT(*) FROM information_schema.routines WHERE routine_name='sp_r12_centros_sobre_promedio'\" | grep -q 1"]
       interval: 5s
       timeout: 5s
-      retries: 15
+      retries: 40
+      start_period: 20s
 
   web:
     build: .

@@ -1,0 +1,5 @@
+# Solo se usa en GitHub Codespaces: monta el repositorio dentro del contenedor web
+services:
+  web:
+    volumes:
+      - .:/workspace:cached
