@@ -19,6 +19,12 @@ Base de datos en MySQL 8 y Producto Mínimo Viable (PMV) en Python/Streamlit, de
 
 ## Cómo ejecutarlo
 
+### Opción rápida: GitHub Codespaces
+
+En el repositorio haz clic en **Code › Codespaces › Create codespace on main**. El Codespace instala todo, levanta MySQL y el PMV con Docker Compose y abre la web sola en el puerto 8501 (la primera vez se demora unos minutos). Si no se abre, ve a la pestaña **Ports** y abre el puerto 8501.
+
+### En tu computador
+
 Requisito: tener Docker instalado (o abrir el repositorio en GitHub Codespaces).
 
 ```bash
